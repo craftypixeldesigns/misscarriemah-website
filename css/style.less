@@ -1,0 +1,999 @@
+
+
+@heading-font: 'Libre Baskerville', sans-serif;
+@description-font: 'Work Sans', sans-serif;
+@description-font-size: 18px;
+
+@border: solid 3px;
+@vertical-distance: 3em;
+
+/*==================================
+  COLORS 
+  Generated with help from coolors
+  https://coolors.co/
+====================================*/
+@section-main-color: #FFFCF2;
+@heading-color: #13293D;
+@description-color: #213347;
+
+@primary-color: #165A9D;
+@secondary-color: #1B9AB6;
+@accent-color: #1CBB9D;
+@primary-background-color: #E9F0F6;
+@secondary-background-color: #EAF5F8;
+@accent-background-color: #EAF8F6;
+
+html,
+body {
+  margin: 0;
+}
+
+*,
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*============ 
+  TYPOGRAPHY 
+==============*/
+h1, h2 {
+  font-family: @heading-font;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0;
+  .main-animation();
+}
+
+body {
+  color: @description-color;
+  font-family: @description-font;
+  font-size: @description-font-size;
+  .main-animation();
+}
+
+.section-main {
+  color: @section-main-color;
+
+  h1 {
+    font-size: 100px;
+    margin-bottom: 70px;
+  }
+  h2 {
+    font-size: 60px;
+    line-height: 80px;
+  }
+}
+
+h1.section-heading {
+  color: @heading-color;
+  font-weight: 700;
+  font-size: 50px;
+  margin-bottom: @vertical-distance / 3;
+}
+
+h2.sub-heading {
+  color: @heading-color;
+  font-size: 35px;
+}
+
+h2.skills-heading {
+  color: @heading-color;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  color: @description-color;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 0px;
+  margin-bottom: @vertical-distance;
+}
+
+h4,
+p {
+  font-weight: 400;
+  font-size: @description-font-size;
+  line-height: 28px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h4 {
+  color: @heading-color;
+}
+
+@media all and (max-width:1000px) {
+  p {
+    text-align: left;
+    margin-bottom: @vertical-distance / 2;
+  }
+}
+
+@media all and (max-width:500px) {
+  .section-main {
+    h1 {
+      font-size: 4.8em;
+    }
+    h2 {
+      font-size: 2.9em;
+    }
+  }
+}
+
+@media all and (max-width:400px) {
+  .section-main {
+    h1 {
+      font-size: 3.8em;
+    }
+    h2 {
+      font-size: 2.3em;
+      line-height: 60px;
+    }
+  }
+}
+
+/*============
+  NAVIGATION
+  Based on code by x3pr and apu314
+  https://codepen.io/x3pr/pen/gPJeoe/
+  https://codepen.io/apu314/pen/wazxYr/
+==============*/
+nav.menu {
+    font-size: 20px;
+    background: @primary-background-color;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+    padding-top: @vertical-distance;
+    width: 300px;
+    height: 100vh;
+    left: -300px;
+    top: 0;
+    position: fixed;
+    z-index: 98; 
+    .main-animation();
+
+    &.slide-in-menu {
+      ul {
+        padding-left: 0;
+        display: table;
+        width: 100%;
+        height: 50vh;
+
+        li {
+          padding-bottom: @vertical-distance;
+          display: table-row;
+
+          a {
+            padding-left: 130px;
+            width: 100%;
+          }
+        }
+      }
+      
+      svg.logo-cm {
+        margin-left: 130px;
+        margin-bottom: @vertical-distance / 2;
+      }
+    }
+}
+
+svg.logo-cm {
+  width: 50px;
+
+  .logo-c {
+    fill: @primary-color;
+  }
+
+  .logo-m {
+    fill: @secondary-color;
+  }
+}
+
+label[name="menu-button-label"] {
+  border: @border @secondary-color;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: @vertical-distance / 2;
+  left: @vertical-distance / 2;
+  z-index: 99;
+  .main-animation();
+
+  .bar {
+    background: @secondary-color;
+    position: absolute;
+    left: 12px;
+    width: 30px;
+    height: 3px;
+    .main-animation();
+  }
+  .bar:nth-child(1) {
+    top: 1rem;
+  }
+  .bar:nth-child(2) {
+    top: calc(50% - 1.5px);
+  }
+  .bar:nth-child(3) {
+    bottom: 1rem;
+  }
+
+  &:hover {
+    background: @secondary-color;
+
+    .bar {
+      background: white;
+    }
+  }
+}
+    
+input[name="menu-button"] {
+  display: none;
+
+  &:checked ~ .slide-in-menu {
+    left: 0px;
+  }
+
+  &:checked + label[name="menu-button-label"] {
+    background: @secondary-color;
+
+    .bar{
+      background: white;
+
+      &:nth-child(1) {
+        .rotate(45deg);
+        top: calc(50% - 1.5px);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        .rotate(-45deg);
+        bottom: calc(50% - 1.5px);
+      }
+    }
+
+  }
+}
+
+.hide-menu {
+  left: -300px;
+}
+
+@media all and (max-width:460px) {
+  nav.menu {
+    font-size: 25px;
+    padding-top: 2em;
+
+    &.slide-in-menu {
+      ul {
+        height: 60vh;
+      }
+    }
+  }
+
+  nav.menu.slide-in-menu svg.logo-cm {
+    width: 80px;
+    margin-bottom: .5em;
+  }
+
+  label[name="menu-button-label"] {
+    top: @vertical-distance / 3;
+    left: @vertical-distance / 3;
+  }
+}
+
+@media all and (max-width:380px) {
+  label[name="menu-button-label"] {
+    top: 0;
+    left: 0;
+  }
+}
+
+/*===========================================
+  SECTIONS 
+  Based on code by Bjorn
+  https://codepen.io/BjornRombaut/pen/mOLGgX
+
+  Scrolling based on code by 
+  https://stackoverflow.com/questions/17631417/css-pure-css-scroll-animation
+============================================*/
+section.fullscreen,
+section.fullscreen-bottom {
+  padding: @vertical-distance * 1.2 0;
+  width: 100%;
+  /*z-index:0;*/
+  /*-webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;*/
+}
+
+section.fullscreen {
+  min-height: 100vh;
+}
+
+section.fullscreen.section-main {
+  background: @primary-color;
+  color: @section-main-color;
+  padding-top: @vertical-distance * 1.2;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cube {
+  z-index: -1;
+  border: solid 1px darken(@primary-color, 8%);
+  position: absolute;
+  top: 80vh;
+  left: 65vw;
+  width: 10px;
+  height: 10px;
+  transform-origin: top left;
+  transform: scale(0) rotate(0deg) translate(-50%, -50%);
+  animation: cube 12s ease-in forwards infinite;
+  
+  &:nth-child(2n) {
+    border-color: lighten(@primary-color, 10%);
+    transform: scale(0) rotate(0deg) translate(50%, 50%);
+    animation: cube-reverse 12s ease-in forwards infinite;
+  }
+  
+  &:nth-child(2) {
+    animation-delay: 1s;
+    left: 40vw;
+    top: 50vh;
+  }
+  
+  &:nth-child(3) {
+    animation-delay: 1s;
+    left: 90vw;
+    top: 30vh;
+  }
+  
+  &:nth-child(4) {
+    animation-delay: 4s;
+    left: 45vw;
+    top: 20vh;
+  }
+  
+  &:nth-child(5) {
+    animation-delay: 6s;
+    left: 10vw;
+    top: 45vh;
+  }
+  
+  &:nth-child(6) {
+    animation-delay: 8s;
+    left: 35vw;
+    top: 85vh;
+  }
+}
+
+@keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);   
+    opacity: 1;
+  }
+  to {
+    transform: scale(10) rotate(120deg) translate(-150%, -150%); 
+    opacity: 0;
+  }
+}
+
+@keyframes cube-reverse {
+  from {
+    transform: scale(0) rotate(0deg) translate(50%, 50%);   
+    opacity: 1;
+  }
+  to {
+    transform: scale(10) rotate(300deg) translate(150%, 150%); 
+    opacity: 0;
+  }
+}
+
+/*=====================================
+  MOUSE SCROLL
+  Based on code by Florian Quiblier
+  https://codepen.io/fofoy/pen/YWLabQ
+=======================================*/
+.mouse {
+  border: 2px solid @section-main-color;
+  border-radius: 25px;
+  height: 35px * 1.3;
+  width: 20px * 1.3;
+  display: inline-block;
+  position: relative;
+  margin-top: @vertical-distance * 1.5;
+  
+  &:before {
+    content: '';
+    background: @section-main-color;
+    width: 2px;
+    height: 8px;
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    animation: mouse-scroll-animation 2s ease-in-out infinite;
+  }
+}
+
+@keyframes mouse-scroll-animation {
+  0% {
+    transform: scale(1,0);
+    transform-origin: 50% 0;
+  }
+  20%, 80% {
+    transform: scale(1,1);
+  }
+  81% {
+    transform-origin: 50% 100%;  
+  }
+  100% {
+    transform: scale(1,0);
+    transform-origin: 50% 100%; 
+  }
+}
+
+@media all and (max-width:500px) {
+  .mouse {
+    border-width: 3px;
+    height: 35px * 2;
+    width: 20px * 2;
+    margin-top: @vertical-distance;
+
+    &:before {
+      width: 3px;
+      height: 15px;
+      top: 10px;
+      left: 15px;
+    }
+  }
+}
+
+/*============================================
+  IMAGES
+  Based on code by Josh Howenstine
+  https://codepen.io/joshhowenstine/pen/yLqgb
+==============================================*/
+@hexagon-width: 225px;
+
+.hexagon-container {
+  height: @hexagon-width * 2;
+  width: @hexagon-width;
+  overflow: hidden;
+  margin-top: -@vertical-distance * 2;
+  margin-bottom: -@vertical-distance;
+  .rotate(120deg);
+}
+
+.hex-outer,
+.hex-inner {
+  height: 100%;
+  width: 100%;
+  .rotate(-60deg);
+}
+
+.hex-outer {
+  overflow: hidden;
+}
+
+.hex-inner {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-image: url(../images/misscarriemah-main.jpg);
+  background-size: (@hexagon-width + (@hexagon-width * .20)) (@hexagon-width + (@hexagon-width * .20));
+  position: relative;
+}
+
+@media all and (max-width:1000px) {
+  div.hexagon-container {
+    margin-left: 0;
+  }
+}
+
+@media all and (max-width:420px) {
+  .hexagon-container {
+    width: @hexagon-width / 1.3;
+  }
+
+  .hex-inner {
+    background-size: (@hexagon-width - (@hexagon-width * .1)) (@hexagon-width - (@hexagon-width * .1));
+  }
+}
+
+/*========
+  LISTS
+==========*/
+ul {
+  color: @description-color;
+  list-style: none;
+  list-style-position: outside;
+  margin-left: 0;
+
+  li {
+    padding-bottom: 10px;
+
+    &:before {
+      color: @accent-color;
+      font-weight: 700;
+    }
+  }
+}
+
+ul.press-list,
+ul.events-list {
+  li {
+    list-style-type: square;
+    color: @primary-color;
+    font-size: 25px;
+
+    span {
+      color: @description-color;
+      font-size: @description-font-size;
+    }
+  }
+}
+
+ul.events-list {
+  margin-bottom: @vertical-distance / 2;
+}
+
+ul.skills {
+  font-size: 16px;
+  line-height: 22px;
+  padding-left: 1.3em;
+  text-indent: -1.3em;
+
+  li {
+    &:before {
+      content: "☆ ";
+    }
+
+    &:last-child {
+      padding-bottom: @vertical-distance / 2;
+    }
+  }
+}
+
+ul.social-list li {
+  margin-bottom: @vertical-distance / 4;
+}
+
+/*========================================
+  FOOTER
+  Based on code by Jase Smith
+  https://codepen.io/jasesmith/pen/ygbXXQ
+==========================================*/
+
+section.fullscreen-bottom {
+  min-height: 90vh;
+}
+
+footer {
+  background: @primary-background-color;
+  position: relative;
+  padding: ( @vertical-distance) 0;
+  min-height: 10vh;
+}
+
+div.social-list {
+  ul {
+    margin: 0;
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+      width: 56px;
+      height: 56px;
+      margin-right: 20px;
+      padding: 13px 15px;
+      border: @border @secondary-color;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a:hover {
+        color: @primary-background-color;
+
+        [tooltip] {
+          &.twitter::after {
+            background: #55acee;
+            border-color: #55acee;
+          }
+          &.medium::after {
+            background: #00ab6c;
+            border-color: #00ab6c;
+          }
+          &.linkedin::after {
+            background: #0077B5;
+            border-color: #0077B5;
+          }
+        }
+      }
+    }
+  }
+
+  svg.social {
+    height: 20px;
+    width: 20px;
+
+    &.twitter g path,
+    &.medium g path,
+    &.medium g polygon,
+    &.linkedin g path {
+      fill: @secondary-color;
+    }
+
+    &.medium-hover {
+      display: none;
+    }
+  }
+
+  a:hover {
+    svg.social {
+      &.twitter g path {
+        fill: #55acee;
+      }
+
+      &.medium {
+        display: none;
+      }
+
+      &.medium-hover {
+        display: inline-block;
+      }
+
+      &.linkedin g path {
+        fill: #0077B5;
+      }
+    }
+  }
+}
+
+[tooltip] {
+  position: relative;
+
+  &::before,
+  &::after {
+    font-size: @description-font-size / 1.25;
+    letter-spacing: 1.1px;
+    position: absolute;
+    display: none;
+    opacity: 0;
+  }
+
+  &::after {
+    content: attr(tooltip);
+    border: @border;
+    min-width: 3em;
+    max-width: 21em;
+    padding: 1ch 1.5ch;
+    top: 7px;
+    left: calc(100% + 5px);
+    white-space: nowrap;
+    transform: translate(-.1em, -50%);
+  }
+
+  &:hover::before,
+  &:hover::after {
+    display: block;
+    background: @primary-background-color;
+    z-index: 1;
+    animation: tooltip-slide-in-animation 300ms ease-out forwards;
+  }
+}
+
+@keyframes tooltip-slide-in-animation {
+  to {
+    opacity: 1;
+    transform: translate(1em, -50%);
+  }
+}
+
+div.copyright-list p {
+  font-size: @description-font-size / 1.2;
+  text-align: right;
+}
+
+@media all and (max-width:1150px) {
+  footer .col-3 {
+    width: 100%;
+    padding-right: 0;
+  }
+  div.social-list {
+    text-align: center;
+    margin-bottom: @vertical-distance / 2;
+  }
+  div.copyright-list {
+    p {
+      text-align: center;
+      margin-bottom: @vertical-distance / 4;
+    }
+  }
+}
+
+@media all and (max-width:400px) {
+  div.social-list {
+    ul li { 
+      border: 0;
+      padding: 0;
+      width: 40px;
+    }
+  }
+}
+
+/*==========================================
+  LINKS
+  Based on code by Matt Beaudry
+  https://codepen.io/mattbeaudry/pen/faKvy
+============================================*/
+a {
+  color: @secondary-color;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+a.underline {
+  .main-animation();
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited, {
+    font-weight: 700;
+  }
+
+  &::before {
+    content: " ";
+    border-bottom: @border @secondary-color;
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    width: 0%;
+    .main-animation();
+  }
+
+  &:hover::before,
+  &:active::before,
+  &:focus::before,
+  &:visited::before, {
+    border-bottom: @border @secondary-color;
+    left: 0%;
+    width: 100%;
+  }
+
+  &.underline::before {
+    left: 0%;
+  }
+}
+
+/*========================================
+  BUTTON
+  Based on code by Vo Tuan Trung
+  https://codepen.io/trungk18/pen/WxxLVd
+==========================================*/
+
+button.main-btn {
+  background: transparent;
+  border: solid 5px @secondary-color;
+  color: @secondary-color;
+  font-size: @description-font-size;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: @vertical-distance;
+  padding: 25px 80px;
+  position: relative;
+  z-index: 1;
+  .main-animation();
+
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    .main-animation();
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+button.slide-in-btn {
+  &:after {
+    background: @secondary-color;
+    height: 100%;
+    width: 0;
+    top: 0;
+    left: 0;
+  }
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited, {
+    color: @section-main-color;
+  }
+  &:hover:after,
+  &:active:after,
+  &:focus:after,
+  &:visited:after {
+    width: 100%;
+  }
+}
+
+@media all and (max-width:817px) {
+  button.main-btn {
+    font-size: 1em;
+    letter-spacing: 1px;
+    padding: 25px 15px;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media all and (max-width:670px) {
+  button.contact-btn,
+  button.main-btn {
+    font-size: .8em;
+    border-width: 4px;
+  }
+
+  button.contact-btn {
+    margin-top: @vertical-distance / 2;
+  }
+}
+
+@media all and (max-width:463px) {
+  button.main-btn {
+    font-size: .6em;
+    border-width: 3px;
+    padding: 15px 10px;
+  }
+}
+
+@media all and (max-width:396px) {
+  button.main-btn {
+    border-width: 2px;
+    line-height: 15px;
+  }
+}
+
+@media all and (max-width:550px) {
+  button.contact-btn {
+    border: none;
+    margin-left: 0;
+    padding: 0;
+  }
+}
+
+/*================
+  HELPER CLASSES
+==================*/
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.left-block {
+  float: left;
+  clear: left;
+  text-align: left;
+}
+
+.right-block {
+  float: right;
+  clear: right;
+  text-align: right;
+}
+
+.bg-light {
+  background: @secondary-background-color;
+}
+
+.bg-alternate {
+  background: @accent-background-color;
+}
+
+.vertical-distance {
+  margin-top: @vertical-distance;
+}
+
+.main-animation() {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.rotate(@angle) {
+  -moz-transform: rotate(@angle);
+  -ms-transform: rotate(@angle);
+  -webkit-transform: rotate(@angle);
+  transform: rotate(@angle);
+}
+
+.gradient() {
+  background: -webkit-linear-gradient(90deg, @secondary-color 10%, @primary-color 90%);
+  /*============== Chrome 10+, Saf5.1+ ==============*/
+  background: -moz-linear-gradient(90deg, @secondary-color 10%, @primary-color 90%);
+  /*============== FF3.6+ ==============*/
+  background: -ms-linear-gradient(90deg, @secondary-color 10%, @primary-color 90%);
+  /*============== IE10 ==============*/
+  background: -o-linear-gradient(90deg, @secondary-color 10%, @primary-color 90%);
+  /*============== Opera 11.10+ ==============*/
+  background: linear-gradient(90deg, @secondary-color 10%, @primary-color 90%);
+}
+
+/*======================================================
+  GRID
+  Based on code by Jan Drewniak 
+  http://j4n.co/blog/Creating-your-own-css-grid-system
+========================================================*/
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 70%;
+  width: 100%;     
+}
+
+.row:before, 
+.row:after {
+  content:"";
+  display: table ;
+  clear:both;
+}
+
+[class*='col-'] {
+  float: left; 
+  min-height: 1px; 
+  width: 16.66%; 
+  /* Gutter */
+  padding-right: 60px;
+}
+
+.col-1{ width: 16.66%; }
+.col-2{ width: 33.33%; }
+.col-3{ width: 50%;    }
+.col-4{ width: 66.66%; }
+.col-5{ width: 83.33%; }
+.col-6{ width: 100%;   }
+
+@media all and (max-width:1000px){
+  [class*='col-'] { padding-right: 0;}
+  .col-1{ width: 33.33%; }
+  .col-2{ width: 50%;    }
+  .col-3{ width: 100%; }
+  .col-4{ width: 100%;   }
+  .col-5{ width: 100%;   }
+  .col-6{ width: 100%;   }
+
+  .row .col-2:last-of-type{
+      width: 100%; 
+  }
+
+  .row .col-5 ~ .col-1{
+      width: 100%; 
+  }
+}
+
+@media all and (max-width:650px){
+  .col-1{ width: 100%;   }
+  .col-2{ width: 100%;  }
+  .col-3{ width: 100%;  }
+  .col-4{ width: 100%;  }
+  .col-5{ width: 100%;  }
+  .col-6{ width: 100%;  }
+}
