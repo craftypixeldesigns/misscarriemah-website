@@ -6,6 +6,8 @@
 html,
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 *,
 :after,
@@ -119,7 +121,7 @@ nav.menu {
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
   padding-top: 3em;
   width: 300px;
-  height: 100vh;
+  min-height: 100vh;
   left: -300px;
   top: 0;
   position: fixed;
@@ -132,24 +134,20 @@ nav.menu {
 }
 nav.menu.slide-in-menu ul {
   padding-left: 0;
-  display: table;
   width: 100%;
-  height: 50vh;
 }
 nav.menu.slide-in-menu ul li {
-  padding-bottom: 3em;
-  display: table-row;
+  padding-bottom: 0;
 }
 nav.menu.slide-in-menu ul li a {
   padding-left: 130px;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
   width: 100%;
-}
-nav.menu.slide-in-menu svg.logo-cm {
-  margin-left: 130px;
-  margin-bottom: 1.5em;
 }
 svg.logo-cm {
   width: 50px;
+  margin-bottom: 1.5em;
 }
 svg.logo-cm .logo-c {
   fill: #165A9D;
@@ -228,10 +226,7 @@ input[name="menu-button"]:checked + label[name="menu-button-label"] .bar:nth-chi
   transform: rotate(-45deg);
   bottom: calc(48.5%);
 }
-.hide-menu {
-  left: -300px;
-}
-@media all and (max-width: 460px) {
+@media all and (max-width: 650px) {
   nav.menu {
     font-size: 25px;
     padding-top: 2em;
@@ -248,10 +243,50 @@ input[name="menu-button"]:checked + label[name="menu-button-label"] .bar:nth-chi
     left: 1em;
   }
 }
-@media all and (max-width: 380px) {
+@media all and (max-width: 525px) {
+  label[name="menu-button-label"] {
+    height: 50px;
+    width: 50px;
+    top: 0.5em;
+    left: 0.5em;
+  }
+  label[name="menu-button-label"] .bar {
+    width: 25px;
+    left: 9px;
+  }
+  label[name="menu-button-label"] .bar:nth-child(1) {
+    top: 0.7rem;
+  }
+  label[name="menu-button-label"] .bar:nth-child(2) {
+    top: calc(48.5%);
+  }
+  label[name="menu-button-label"] .bar:nth-child(3) {
+    bottom: 0.7rem;
+  }
+}
+@media all and (max-width: 410px) {
   label[name="menu-button-label"] {
     top: 0;
     left: 0;
+  }
+}
+@media all and (max-width: 320px) {
+  label[name="menu-button-label"] {
+    height: 45px;
+    width: 45px;
+  }
+  label[name="menu-button-label"] .bar {
+    width: 23px;
+    left: 8px;
+  }
+  label[name="menu-button-label"] .bar:nth-child(1) {
+    top: 0.6rem;
+  }
+  label[name="menu-button-label"] .bar:nth-child(2) {
+    top: calc(47%);
+  }
+  label[name="menu-button-label"] .bar:nth-child(3) {
+    bottom: 0.6rem;
   }
 }
 /*===========================================
@@ -262,15 +297,11 @@ input[name="menu-button"]:checked + label[name="menu-button-label"] .bar:nth-chi
   Scrolling based on code by 
   https://stackoverflow.com/questions/17631417/css-pure-css-scroll-animation
 ============================================*/
-section.fullscreen,
-section.fullscreen-bottom {
+section.fullscreen {
   padding: 3.6em 0;
   width: 100%;
-  /*z-index:0;*/
-  /*-webkit-transition: -webkit-transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out;*/
 }
-section.fullscreen {
+.max-height {
   min-height: 100vh;
 }
 section.fullscreen.section-main {
@@ -349,7 +380,7 @@ section.fullscreen.section-main {
   https://codepen.io/fofoy/pen/YWLabQ
 =======================================*/
 .mouse {
-  border: 2px solid #FFFCF2;
+  border: solid 2px #FFFCF2;
   border-radius: 25px;
   height: 45.5px;
   width: 26px;
@@ -439,7 +470,7 @@ section.fullscreen.section-main {
     margin-left: 0;
   }
 }
-@media all and (max-width: 420px) {
+@media all and (max-width: 400px) {
   .hexagon-container {
     width: 173.07692308px;
   }
@@ -525,8 +556,8 @@ div.social-list ul li a:hover {
   color: #E9F0F6;
 }
 div.social-list ul li a:hover [tooltip].twitter::after {
-  background: #55acee;
-  border-color: #55acee;
+  background: #1da1f2;
+  border-color: #1da1f2;
 }
 div.social-list ul li a:hover [tooltip].medium::after {
   background: #00ab6c;
@@ -550,7 +581,7 @@ div.social-list svg.social.medium-hover {
   display: none;
 }
 div.social-list a:hover svg.social.twitter g path {
-  fill: #55acee;
+  fill: #1da1f2;
 }
 div.social-list a:hover svg.social.medium {
   display: none;
@@ -578,7 +609,7 @@ div.social-list a:hover svg.social.linkedin g path {
   min-width: 3em;
   max-width: 21em;
   padding: 1ch 1.5ch;
-  top: 7px;
+  top: 9px;
   left: calc(105%);
   white-space: nowrap;
   transform: translate(-0.1em, -50%);
@@ -600,7 +631,7 @@ div.copyright-list p {
   font-size: 15px;
   text-align: right;
 }
-@media all and (max-width: 1150px) {
+@media all and (max-width: 1115px) {
   footer .col-3 {
     width: 100%;
     padding-right: 0;
@@ -612,6 +643,13 @@ div.copyright-list p {
   div.copyright-list p {
     text-align: center;
     margin-bottom: 0.75em;
+  }
+}
+@media all and (max-width: 650px) {
+  [tooltip]::after,
+  [tooltip]:hover::before,
+  [tooltip]:hover::after {
+    display: none;
   }
 }
 @media all and (max-width: 400px) {
@@ -650,7 +688,7 @@ a.underline::before {
   border-bottom: solid 3px #1B9AB6;
   display: block;
   position: absolute;
-  bottom: -2px;
+  bottom: -3px;
   width: 0%;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -668,6 +706,11 @@ a.underline:visited::before {
 }
 a.underline.underline::before {
   left: 0%;
+}
+.underline-active {
+  font-weight: 700;
+  color: #FFFCF2;
+  background: #1B9AB6;
 }
 /*========================================
   BUTTON
@@ -725,43 +768,40 @@ button.slide-in-btn:focus:after,
 button.slide-in-btn:visited:after {
   width: 100%;
 }
-@media all and (max-width: 817px) {
-  button.main-btn {
-    font-size: 1em;
+@media all and (max-width: 680px) {
+  button.main-btn,
+  button.contact-btn {
+    font-size: .9em;
     letter-spacing: 1px;
+    border-width: 4px;
     padding: 25px 15px;
-    margin-left: 0;
+    margin: 0;
     width: 100%;
   }
 }
-@media all and (max-width: 670px) {
-  button.contact-btn,
+button.contact-btn {
+  margin-bottom: 3em;
+}
+@media all and (max-width: 500px) {
   button.main-btn {
     font-size: .8em;
-    border-width: 4px;
+    border-width: 3px;
   }
   button.contact-btn {
-    margin-top: 1.5em;
+    font-size: .9em;
+    text-align: left;
+    border: none;
+    padding: 0;
   }
 }
-@media all and (max-width: 463px) {
+@media all and (max-width: 400px) {
   button.main-btn {
     font-size: .6em;
-    border-width: 3px;
-    padding: 15px 10px;
-  }
-}
-@media all and (max-width: 396px) {
-  button.main-btn {
     border-width: 2px;
     line-height: 15px;
   }
-}
-@media all and (max-width: 550px) {
   button.contact-btn {
-    border: none;
-    margin-left: 0;
-    padding: 0;
+    font-size: .8em;
   }
 }
 /*================

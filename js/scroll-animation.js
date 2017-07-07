@@ -16,7 +16,7 @@ jQuery(function($) {
        var $animatable = $(this);
       
       // Items that are "above the fold"
-			if (($animatable.offset().top + $animatable.height() + 50) < offset) {
+			if (($animatable.offset().top + $animatable.height() + -50) < offset) {
         
         // Item previously wasn't marked as "above the fold": mark it now
         if (!$animatable.hasClass('animate-in')) {
@@ -24,16 +24,6 @@ jQuery(function($) {
         }
 
 			}
-      
-      // Items that are "below the fold"
-      else if (($animatable.offset().top + $animatable.height() + 50) > offset) {
-        
-        // Item previously wasn't marked as "below the fold": mark it now
-        if ($animatable.hasClass('animate-in')) {
-          $animatable.removeClass('animate-in').css('top', $animatable.css('top')).addClass('animate-out');
-        }
-
-      }
 
     });
 

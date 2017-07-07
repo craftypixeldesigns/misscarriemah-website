@@ -1,5 +1,3 @@
-
-
 @heading-font: 'Libre Baskerville', sans-serif;
 @description-font: 'Work Sans', sans-serif;
 @description-font-size: 18px;
@@ -23,9 +21,17 @@
 @secondary-background-color: #EAF5F8;
 @accent-background-color: #EAF8F6;
 
+@responsive-1150: 1150px;
+@responsive-1000: 1000px;
+@responsive-650: 650px;
+@responsive-500: 500px;
+@responsive-400: 400px;
+
 html,
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 *,
@@ -107,14 +113,14 @@ h4 {
   color: @heading-color;
 }
 
-@media all and (max-width:1000px) {
+@media all and (max-width: @responsive-1000) {
   p {
     text-align: left;
     margin-bottom: @vertical-distance / 2;
   }
 }
 
-@media all and (max-width:500px) {
+@media all and (max-width: @responsive-500) {
   .section-main {
     h1 {
       font-size: 4.8em;
@@ -125,7 +131,7 @@ h4 {
   }
 }
 
-@media all and (max-width:400px) {
+@media all and (max-width: @responsive-400) {
   .section-main {
     h1 {
       font-size: 3.8em;
@@ -144,45 +150,40 @@ h4 {
   https://codepen.io/apu314/pen/wazxYr/
 ==============*/
 nav.menu {
-    font-size: 20px;
-    background: @primary-background-color;
-    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
-    padding-top: @vertical-distance;
-    width: 300px;
-    height: 100vh;
-    left: -300px;
-    top: 0;
-    position: fixed;
-    z-index: 98; 
-    .main-animation();
+  font-size: 20px;
+  background: @primary-background-color;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  padding-top: @vertical-distance;
+  width: 300px;
+  min-height: 100vh;
+  left: -300px;
+  top: 0;
+  position: fixed;
+  z-index: 98; 
+  .main-animation();
 
-    &.slide-in-menu {
-      ul {
-        padding-left: 0;
-        display: table;
-        width: 100%;
-        height: 50vh;
+  &.slide-in-menu {
+    ul {
+      padding-left: 0;
+      width: 100%;
 
-        li {
-          padding-bottom: @vertical-distance;
-          display: table-row;
+      li {
+        padding-bottom: 0;
 
-          a {
-            padding-left: 130px;
-            width: 100%;
-          }
+        a {
+          padding-left: 130px;
+          padding-top: @vertical-distance / 2;
+          padding-bottom: @vertical-distance / 2;
+          width: 100%;
         }
       }
-      
-      svg.logo-cm {
-        margin-left: 130px;
-        margin-bottom: @vertical-distance / 2;
-      }
     }
+  }
 }
 
 svg.logo-cm {
   width: 50px;
+  margin-bottom: @vertical-distance / 2;
 
   .logo-c {
     fill: @primary-color;
@@ -211,16 +212,18 @@ label[name="menu-button-label"] {
     width: 30px;
     height: 3px;
     .main-animation();
+
+    &:nth-child(1) {
+      top: 1rem;
+    }
+    &:nth-child(2) {
+      top: calc(50% - 1.5px);
+    }
+    &:nth-child(3) {
+      bottom: 1rem;
+    }
   }
-  .bar:nth-child(1) {
-    top: 1rem;
-  }
-  .bar:nth-child(2) {
-    top: calc(50% - 1.5px);
-  }
-  .bar:nth-child(3) {
-    bottom: 1rem;
-  }
+  
 
   &:hover {
     background: @secondary-color;
@@ -262,11 +265,7 @@ input[name="menu-button"] {
   }
 }
 
-.hide-menu {
-  left: -300px;
-}
-
-@media all and (max-width:460px) {
+@media all and (max-width: @responsive-650) {
   nav.menu {
     font-size: 25px;
     padding-top: 2em;
@@ -289,10 +288,56 @@ input[name="menu-button"] {
   }
 }
 
-@media all and (max-width:380px) {
+@media all and (max-width: (@responsive-500 + 25)) {
+  label[name="menu-button-label"] {
+    height: 50px;
+    width: 50px;
+    top: 0.5em;
+    left: 0.5em;
+
+    .bar {
+      width: 25px;
+      left: 9px;
+
+      &:nth-child(1) {
+        top: 0.7rem;
+      }
+      &:nth-child(2) {
+        top: calc(50% - 1.5px);
+      }
+      &:nth-child(3) {
+        bottom: 0.7rem;
+      }
+    }
+  }
+}
+
+@media all and (max-width: (@responsive-400 + 10)) {
   label[name="menu-button-label"] {
     top: 0;
     left: 0;
+  }
+}
+
+@media all and (max-width: (@responsive-400 - 80)) {
+  label[name="menu-button-label"] {
+    height: 45px;
+    width: 45px;
+
+    .bar {
+      width: 23px;
+      left: 8px;
+
+      &:nth-child(1) {
+        top: 0.6rem;
+      }
+      &:nth-child(2) {
+        top: calc(50% - 3px);
+      }
+      &:nth-child(3) {
+        bottom: 0.6rem;
+      }
+    }
   }
 }
 
@@ -304,16 +349,12 @@ input[name="menu-button"] {
   Scrolling based on code by 
   https://stackoverflow.com/questions/17631417/css-pure-css-scroll-animation
 ============================================*/
-section.fullscreen,
-section.fullscreen-bottom {
+section.fullscreen {
   padding: @vertical-distance * 1.2 0;
   width: 100%;
-  /*z-index:0;*/
-  /*-webkit-transition: -webkit-transform 0.5s ease-in-out;
-  transition: transform 0.5s ease-in-out;*/
 }
 
-section.fullscreen {
+.max-height {
   min-height: 100vh;
 }
 
@@ -403,7 +444,7 @@ section.fullscreen.section-main {
   https://codepen.io/fofoy/pen/YWLabQ
 =======================================*/
 .mouse {
-  border: 2px solid @section-main-color;
+  border: solid 2px @section-main-color;
   border-radius: 25px;
   height: 35px * 1.3;
   width: 20px * 1.3;
@@ -441,7 +482,7 @@ section.fullscreen.section-main {
   }
 }
 
-@media all and (max-width:500px) {
+@media all and (max-width: @responsive-500) {
   .mouse {
     border-width: 3px;
     height: 35px * 2;
@@ -492,13 +533,13 @@ section.fullscreen.section-main {
   position: relative;
 }
 
-@media all and (max-width:1000px) {
+@media all and (max-width: @responsive-1000) {
   div.hexagon-container {
     margin-left: 0;
   }
 }
 
-@media all and (max-width:420px) {
+@media all and (max-width: 400px) {
   .hexagon-container {
     width: @hexagon-width / 1.3;
   }
@@ -605,8 +646,8 @@ div.social-list {
 
         [tooltip] {
           &.twitter::after {
-            background: #55acee;
-            border-color: #55acee;
+            background: #1da1f2;
+            border-color: #1da1f2;
           }
           &.medium::after {
             background: #00ab6c;
@@ -640,7 +681,7 @@ div.social-list {
   a:hover {
     svg.social {
       &.twitter g path {
-        fill: #55acee;
+        fill: #1da1f2;
       }
 
       &.medium {
@@ -676,7 +717,7 @@ div.social-list {
     min-width: 3em;
     max-width: 21em;
     padding: 1ch 1.5ch;
-    top: 7px;
+    top: 9px;
     left: calc(100% + 5px);
     white-space: nowrap;
     transform: translate(-.1em, -50%);
@@ -703,7 +744,7 @@ div.copyright-list p {
   text-align: right;
 }
 
-@media all and (max-width:1150px) {
+@media all and (max-width: (@responsive-1000 + 115)) {
   footer .col-3 {
     width: 100%;
     padding-right: 0;
@@ -720,7 +761,17 @@ div.copyright-list p {
   }
 }
 
-@media all and (max-width:400px) {
+@media all and (max-width: @responsive-650) {
+  [tooltip] {
+    &::after,
+    &:hover::before,
+    &:hover::after {
+      display: none;
+    }
+  }
+}
+
+@media all and (max-width: 400px) {
   div.social-list {
     ul li { 
       border: 0;
@@ -757,7 +808,7 @@ a.underline {
     border-bottom: @border @secondary-color;
     display: block;
     position: absolute;
-    bottom: -2px;
+    bottom: -3px;
     width: 0%;
     .main-animation();
   }
@@ -774,6 +825,12 @@ a.underline {
   &.underline::before {
     left: 0%;
   }
+}
+
+.underline-active {
+  font-weight: 700;
+  color: @section-main-color;
+  background: @secondary-color;
 }
 
 /*========================================
@@ -831,48 +888,45 @@ button.slide-in-btn {
   }
 }
 
-@media all and (max-width:817px) {
-  button.main-btn {
-    font-size: 1em;
+@media all and (max-width: (@responsive-650 + 30)) {
+  button.main-btn,
+  button.contact-btn {
+    font-size: .9em;
     letter-spacing: 1px;
+    border-width: 4px;
     padding: 25px 15px;
-    margin-left: 0;
+    margin: 0;
     width: 100%;
   }
 }
 
-@media all and (max-width:670px) {
-  button.contact-btn,
+button.contact-btn {
+  margin-bottom: @vertical-distance;
+}
+
+@media all and (max-width: @responsive-500) {
   button.main-btn {
     font-size: .8em;
-    border-width: 4px;
+    border-width: 3px;
   }
 
   button.contact-btn {
-    margin-top: @vertical-distance / 2;
+    font-size: .9em;
+    text-align: left;
+    border: none;
+    padding: 0;
   }
 }
 
-@media all and (max-width:463px) {
+@media all and (max-width: @responsive-400) {
   button.main-btn {
     font-size: .6em;
-    border-width: 3px;
-    padding: 15px 10px;
-  }
-}
-
-@media all and (max-width:396px) {
-  button.main-btn {
     border-width: 2px;
     line-height: 15px;
   }
-}
 
-@media all and (max-width:550px) {
   button.contact-btn {
-    border: none;
-    margin-left: 0;
-    padding: 0;
+    font-size: .8em;
   }
 }
 
@@ -971,7 +1025,7 @@ button.slide-in-btn {
 .col-5{ width: 83.33%; }
 .col-6{ width: 100%;   }
 
-@media all and (max-width:1000px){
+@media all and (max-width: @responsive-1000){
   [class*='col-'] { padding-right: 0;}
   .col-1{ width: 33.33%; }
   .col-2{ width: 50%;    }
@@ -989,7 +1043,7 @@ button.slide-in-btn {
   }
 }
 
-@media all and (max-width:650px){
+@media all and (max-width: @responsive-650){
   .col-1{ width: 100%;   }
   .col-2{ width: 100%;  }
   .col-3{ width: 100%;  }
