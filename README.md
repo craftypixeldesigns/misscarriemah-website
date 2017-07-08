@@ -4,7 +4,7 @@ A simple and clean one-page portfolio website that's quick to load and easy to u
 
 ## Credits
 
-Feel free to use code in my website, all I ask is that you credit me @missCarrieMah
+Feel free to use code in my website, all I ask is that you credit me [@missCarrieMah](http://www.misscarriemah.ca)
 
 I created code snippets on [Codepen](https://codepen.io/collection/nxREop/) as well if you're interested in specific features.
 
