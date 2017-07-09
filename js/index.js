@@ -1,3 +1,13 @@
+/*
+	Designed and created by Carrie Mah
+	@missCarrieMah
+	
+	Website code is available: 
+		https://github.com/missCarrieMah/misscarriemah-website
+	Code snippets are available: 
+		https://codepen.io/collection/nxREop/
+ */
+
 $(window).load(function() {
 	$('#content-wrapper').click(function() {
 		$("#menu-button").prop('checked', false);
