@@ -1,0 +1,185 @@
+@import "global.less";
+
+section.section-header {
+	margin-bottom: @vertical-distance;
+
+  h1 {
+    font-size: @description-font-size * 2.3;
+  }
+
+  h2 {
+    font-size: @description-font-size * 1.7;
+  }
+
+  p {
+    margin-top: 2.2em;
+  }
+}
+
+div.section-side {
+	margin-bottom: @vertical-distance;
+}
+
+.resume {	
+  &.name-resume {
+    width: 40%;
+    float: left;
+    clear: left;
+  }
+
+  &.about-resume {
+    width: 30%;
+		float: left;
+		clear: left;
+	}
+	&.experience-resume {
+    width: 55%;
+		float: right;
+		clear: right;
+	}
+}
+
+@media all and (max-width: @responsive-1000) {
+.resume {
+  &.name-resume,
+  &.about-resume,
+  &.experience-resume {
+    width: 100%;
+  } 
+}
+
+}
+
+ul.resume-list {
+  li {
+    list-style-type: square;
+    color: @primary-color;
+    font-size: @description-font-size;
+
+    span {
+      font-size: @description-font-size / 1.1;
+      color: @description-color;
+    }
+  }
+}
+
+h2 {
+  margin-bottom: @vertical-distance / 4;
+}
+
+h3 {
+	font-weight: 700;
+	margin-bottom: 0;
+}
+
+p {
+  font-size: @description-font-size / 1.1;
+  line-height: @description-font-size * 1.4;
+}
+
+/*==================================
+  TIMELINE
+  Based on code by Michaela 
+  https://codepen.io/Fischaela/pen/sJdqg/
+====================================*/
+.timeline {
+  margin-top: @vertical-distance;
+  margin-bottom: @vertical-distance * 1.5;
+	position: relative;
+
+  li {
+    list-style-type: none;
+  }
+
+	&:before {
+		content: '';
+		background: @secondary-color;
+    height: 95%;
+    width: 4px;
+		position: absolute;
+		top: 2em;
+		left: 1.7em;
+		
+	}
+}
+
+.timeline-event {
+
+  &:hover {
+  	.timeline-event-icon {
+		  background: @secondary-color;
+      .rotate(45deg);
+		}
+
+		.timeline-event-thumbnail {
+      .box-shadow-animation(40em);
+		}
+	}
+}
+
+.timeline-event-icon,
+.timeline-event-thumbnail {
+  background: @primary-color;
+}
+
+.timeline-event-icon {
+  outline: @border white;
+  margin: 0.4em -.95em;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  .main-animation();
+  .rotate(-45deg);
+}
+
+.timeline-event-text {
+  color: @heading-color;
+  padding-left: 35px;
+  margin-bottom: @vertical-distance / 2;
+  width: 80%;
+
+  h3 {
+    font-size: @description-font-size * 1.3;
+  }
+
+  h4 {
+    font-size: @description-font-size / 1.1;
+  }
+
+  h5 {
+    font-size: @description-font-size / 1.23;
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: @vertical-distance / 3;
+  }
+
+  p {
+    font-size: @description-font-size / 1.3;
+    line-height: @description-font-size * 1.2;
+  }
+
+  strong {
+   display: block;  
+  }
+
+  p:not(.timeline-event-thumbnail) {
+    padding-bottom: @vertical-distance / 4;
+  }
+
+}
+
+.timeline-event-thumbnail {
+  color: @section-main-color;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  padding: 8px 16px;
+  margin-bottom: @vertical-distance / 1.5;
+  .box-shadow-animation(0);
+  .main-animation();
+}
+
+.box-shadow-animation(@direction) {
+  -moz-box-shadow: inset @direction 0 0 0 @secondary-color;
+  -webkit-box-shadow: inset @direction 0 0 0 @secondary-color;
+  box-shadow: inset @direction 0 0 0 @secondary-color;
+}

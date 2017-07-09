@@ -41,32 +41,6 @@ body {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-.section-main {
-  color: #FFFCF2;
-}
-.section-main h1 {
-  font-size: 100px;
-  margin-bottom: 70px;
-}
-.section-main h2 {
-  font-size: 60px;
-  line-height: 80px;
-}
-h1.section-heading {
-  color: #13293D;
-  font-weight: 700;
-  font-size: 50px;
-  margin-bottom: 1em;
-}
-h2.sub-heading {
-  color: #13293D;
-  font-size: 35px;
-}
-h2.skills-heading {
-  color: #13293D;
-  font-size: 30px;
-  margin-bottom: 10px;
-}
 h3 {
   color: #213347;
   font-weight: 400;
@@ -90,23 +64,6 @@ h4 {
   p {
     text-align: left;
     margin-bottom: 1.5em;
-  }
-}
-@media all and (max-width: 500px) {
-  .section-main h1 {
-    font-size: 4.8em;
-  }
-  .section-main h2 {
-    font-size: 2.9em;
-  }
-}
-@media all and (max-width: 400px) {
-  .section-main h1 {
-    font-size: 3.8em;
-  }
-  .section-main h2 {
-    font-size: 2.3em;
-    line-height: 60px;
   }
 }
 /*============
@@ -287,6 +244,214 @@ input[name="menu-button"]:checked + label[name="menu-button-label"] .bar:nth-chi
   }
   label[name="menu-button-label"] .bar:nth-child(3) {
     bottom: 0.6rem;
+  }
+}
+/*========
+  LISTS
+==========*/
+ul {
+  color: #213347;
+  list-style: none;
+  list-style-position: outside;
+  margin-left: 0;
+}
+ul li {
+  padding-bottom: 10px;
+}
+/*==========================================
+  LINKS
+  Based on code by Matt Beaudry
+  https://codepen.io/mattbeaudry/pen/faKvy
+============================================*/
+a {
+  color: #1B9AB6;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+a.underline {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+a.underline:hover,
+a.underline:active,
+a.underline:focus,
+a.underline:visited {
+  font-weight: 700;
+}
+a.underline::before {
+  content: " ";
+  border-bottom: solid 3px #1B9AB6;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  width: 0%;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+a.underline:hover::before,
+a.underline:active::before,
+a.underline:focus::before,
+a.underline:visited::before {
+  border-bottom: solid 3px #1B9AB6;
+  left: 0%;
+  width: 100%;
+}
+a.underline.underline::before {
+  left: 0%;
+}
+.underline-active {
+  font-weight: 700;
+  color: #FFFCF2;
+  background: #1B9AB6;
+}
+/*================
+  HELPER CLASSES
+==================*/
+.vertical-distance {
+  margin-top: 3em;
+}
+/*======================================================
+  GRID
+  Based on code by Jan Drewniak 
+  http://j4n.co/blog/Creating-your-own-css-grid-system
+========================================================*/
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 70%;
+  width: 100%;
+}
+.row:before,
+.row:after {
+  content: "";
+  display: table ;
+  clear: both;
+}
+[class*='col-'] {
+  float: left;
+  min-height: 1px;
+  width: 16.66%;
+  /* Gutter */
+  padding-right: 60px;
+}
+.col-1 {
+  width: 16.66%;
+}
+.col-2 {
+  width: 33.33%;
+}
+.col-3 {
+  width: 50%;
+}
+.col-4 {
+  width: 66.66%;
+}
+.col-5 {
+  width: 83.33%;
+}
+.col-6 {
+  width: 100%;
+}
+@media all and (max-width: 1000px) {
+  [class*='col-'] {
+    padding-right: 0;
+  }
+  .col-1 {
+    width: 33.33%;
+  }
+  .col-2 {
+    width: 50%;
+  }
+  .col-3 {
+    width: 100%;
+  }
+  .col-4 {
+    width: 100%;
+  }
+  .col-5 {
+    width: 100%;
+  }
+  .col-6 {
+    width: 100%;
+  }
+  .row .col-2:last-of-type {
+    width: 100%;
+  }
+  .row .col-5 ~ .col-1 {
+    width: 100%;
+  }
+}
+@media all and (max-width: 650px) {
+  .col-1 {
+    width: 100%;
+  }
+  .col-2 {
+    width: 100%;
+  }
+  .col-3 {
+    width: 100%;
+  }
+  .col-4 {
+    width: 100%;
+  }
+  .col-5 {
+    width: 100%;
+  }
+  .col-6 {
+    width: 100%;
+  }
+}
+/*============ 
+  TYPOGRAPHY 
+==============*/
+.section-main {
+  color: #FFFCF2;
+}
+.section-main h1 {
+  font-size: 100px;
+  margin-bottom: 70px;
+}
+.section-main h2 {
+  font-size: 60px;
+  line-height: 80px;
+}
+h1.section-heading {
+  color: #13293D;
+  font-weight: 700;
+  font-size: 50px;
+  margin-bottom: 1em;
+}
+h2.sub-heading {
+  color: #13293D;
+  font-size: 35px;
+}
+h2.skills-heading {
+  color: #13293D;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+@media all and (max-width: 500px) {
+  .section-main h1 {
+    font-size: 4.8em;
+  }
+  .section-main h2 {
+    font-size: 2.9em;
+  }
+}
+@media all and (max-width: 400px) {
+  .section-main h1 {
+    font-size: 3.8em;
+  }
+  .section-main h2 {
+    font-size: 2.3em;
+    line-height: 60px;
   }
 }
 /*===========================================
@@ -481,19 +646,6 @@ section.fullscreen.section-main {
 /*========
   LISTS
 ==========*/
-ul {
-  color: #213347;
-  list-style: none;
-  list-style-position: outside;
-  margin-left: 0;
-}
-ul li {
-  padding-bottom: 10px;
-}
-ul li:before {
-  color: #1CBB9D;
-  font-weight: 700;
-}
 ul.press-list li,
 ul.events-list li {
   list-style-type: square;
@@ -508,16 +660,18 @@ ul.events-list li span {
 ul.events-list {
   margin-bottom: 1.5em;
 }
-ul.skills {
+ul.skills-list {
   font-size: 16px;
   line-height: 22px;
   padding-left: 1.3em;
   text-indent: -1.3em;
 }
-ul.skills li:before {
+ul.skills-list li:before {
   content: "☆ ";
+  color: #1CBB9D;
+  font-weight: 700;
 }
-ul.skills li:last-child {
+ul.skills-list li:last-child {
   padding-bottom: 1.5em;
 }
 ul.social-list li {
@@ -659,59 +813,6 @@ div.copyright-list p {
     width: 40px;
   }
 }
-/*==========================================
-  LINKS
-  Based on code by Matt Beaudry
-  https://codepen.io/mattbeaudry/pen/faKvy
-============================================*/
-a {
-  color: #1B9AB6;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-}
-a.underline {
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-a.underline:hover,
-a.underline:active,
-a.underline:focus,
-a.underline:visited {
-  font-weight: 700;
-}
-a.underline::before {
-  content: " ";
-  border-bottom: solid 3px #1B9AB6;
-  display: block;
-  position: absolute;
-  bottom: -3px;
-  width: 0%;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-a.underline:hover::before,
-a.underline:active::before,
-a.underline:focus::before,
-a.underline:visited::before {
-  border-bottom: solid 3px #1B9AB6;
-  left: 0%;
-  width: 100%;
-}
-a.underline.underline::before {
-  left: 0%;
-}
-.underline-active {
-  font-weight: 700;
-  color: #FFFCF2;
-  background: #1B9AB6;
-}
 /*========================================
   BUTTON
   Based on code by Vo Tuan Trung
@@ -812,113 +913,9 @@ button.contact-btn {
   margin-left: auto;
   margin-right: auto;
 }
-.left-block {
-  float: left;
-  clear: left;
-  text-align: left;
-}
-.right-block {
-  float: right;
-  clear: right;
-  text-align: right;
-}
 .bg-light {
   background: #EAF5F8;
 }
 .bg-alternate {
   background: #EAF8F6;
-}
-.vertical-distance {
-  margin-top: 3em;
-}
-/*======================================================
-  GRID
-  Based on code by Jan Drewniak 
-  http://j4n.co/blog/Creating-your-own-css-grid-system
-========================================================*/
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 70%;
-  width: 100%;
-}
-.row:before,
-.row:after {
-  content: "";
-  display: table ;
-  clear: both;
-}
-[class*='col-'] {
-  float: left;
-  min-height: 1px;
-  width: 16.66%;
-  /* Gutter */
-  padding-right: 60px;
-}
-.col-1 {
-  width: 16.66%;
-}
-.col-2 {
-  width: 33.33%;
-}
-.col-3 {
-  width: 50%;
-}
-.col-4 {
-  width: 66.66%;
-}
-.col-5 {
-  width: 83.33%;
-}
-.col-6 {
-  width: 100%;
-}
-@media all and (max-width: 1000px) {
-  [class*='col-'] {
-    padding-right: 0;
-  }
-  .col-1 {
-    width: 33.33%;
-  }
-  .col-2 {
-    width: 50%;
-  }
-  .col-3 {
-    width: 100%;
-  }
-  .col-4 {
-    width: 100%;
-  }
-  .col-5 {
-    width: 100%;
-  }
-  .col-6 {
-    width: 100%;
-  }
-  .row .col-2:last-of-type {
-    width: 100%;
-  }
-  .row .col-5 ~ .col-1 {
-    width: 100%;
-  }
-}
-@media all and (max-width: 650px) {
-  .col-1 {
-    width: 100%;
-  }
-  .col-2 {
-    width: 100%;
-  }
-  .col-3 {
-    width: 100%;
-  }
-  .col-4 {
-    width: 100%;
-  }
-  .col-5 {
-    width: 100%;
-  }
-  .col-6 {
-    width: 100%;
-  }
 }

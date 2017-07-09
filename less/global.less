@@ -1,0 +1,441 @@
+@heading-font: 'Libre Baskerville', sans-serif;
+@description-font: 'Work Sans', sans-serif;
+@description-font-size: 18px;
+
+@border: solid 3px;
+@vertical-distance: 3em;
+
+/*==================================
+  COLORS 
+  Generated with help from coolors
+  https://coolors.co/
+====================================*/
+@section-main-color: #FFFCF2;
+@heading-color: #13293D;
+@description-color: #213347;
+
+@primary-color: #165A9D;
+@secondary-color: #1B9AB6;
+@accent-color: #1CBB9D;
+@primary-background-color: #E9F0F6;
+@secondary-background-color: #EAF5F8;
+@accent-background-color: #EAF8F6;
+
+@responsive-1150: 1150px;
+@responsive-1000: 1000px;
+@responsive-650: 650px;
+@responsive-500: 500px;
+@responsive-400: 400px;
+
+html,
+body {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*,
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*============ 
+  TYPOGRAPHY 
+==============*/
+body {
+  color: @description-color;
+  font-family: @description-font;
+  font-size: @description-font-size;
+  .main-animation();
+}
+
+h1, h2 {
+  font-family: @heading-font;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0;
+  .main-animation();
+}
+
+h3 {
+  color: @description-color;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 0px;
+  margin-bottom: @vertical-distance;
+}
+
+h4,
+p {
+  font-weight: 400;
+  font-size: @description-font-size;
+  line-height: 28px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h4 {
+  color: @heading-color;
+}
+
+@media all and (max-width: @responsive-1000) {
+  p {
+    text-align: left;
+    margin-bottom: @vertical-distance / 2;
+  }
+}
+
+/*============
+  NAVIGATION
+  Based on code by x3pr and apu314
+  https://codepen.io/x3pr/pen/gPJeoe/
+  https://codepen.io/apu314/pen/wazxYr/
+==============*/
+nav.menu {
+  font-size: 20px;
+  background: @primary-background-color;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  padding-top: @vertical-distance;
+  width: 300px;
+  min-height: 100vh;
+  left: -300px;
+  top: 0;
+  position: fixed;
+  z-index: 98; 
+  .main-animation();
+
+  &.slide-in-menu {
+    ul {
+      padding-left: 0;
+      width: 100%;
+      display: table;
+      height: 50vh;
+
+      li {
+        padding-bottom: 0;
+        display: table-row;
+
+        a {
+          padding-left: 130px;
+          padding-top: @vertical-distance / 3;
+          padding-bottom: @vertical-distance / 3;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+svg.logo-cm {
+  width: 50px;
+  margin-bottom: @vertical-distance / 2;
+
+  .logo-c {
+    fill: @primary-color;
+  }
+
+  .logo-m {
+    fill: @secondary-color;
+  }
+}
+
+label[name="menu-button-label"] {
+  border: @border @secondary-color;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: @vertical-distance / 2;
+  left: @vertical-distance / 2;
+  z-index: 99;
+  .main-animation();
+
+  .bar {
+    background: @secondary-color;
+    position: absolute;
+    left: 12px;
+    width: 30px;
+    height: 3px;
+    .main-animation();
+
+    &:nth-child(1) {
+      top: 1rem;
+    }
+    &:nth-child(2) {
+      top: calc(50% - 1.5px);
+    }
+    &:nth-child(3) {
+      bottom: 1rem;
+    }
+  }
+  
+
+  &:hover {
+    background: @secondary-color;
+
+    .bar {
+      background: white;
+    }
+  }
+}
+    
+input[name="menu-button"] {
+  display: none;
+
+  &:checked ~ .slide-in-menu {
+    left: 0px;
+  }
+
+  &:checked + label[name="menu-button-label"] {
+    background: @secondary-color;
+
+    .bar{
+      background: white;
+
+      &:nth-child(1) {
+        .rotate(45deg);
+        top: calc(50% - 1.5px);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        .rotate(-45deg);
+        bottom: calc(50% - 1.5px);
+      }
+    }
+
+  }
+}
+
+@media all and (max-width: @responsive-650) {
+  nav.menu {
+    font-size: 25px;
+    padding-top: 2em;
+
+    &.slide-in-menu {
+      ul {
+        height: 60vh;
+      }
+    }
+  }
+
+  nav.menu.slide-in-menu svg.logo-cm {
+    width: 80px;
+    margin-bottom: .5em;
+  }
+
+  label[name="menu-button-label"] {
+    top: @vertical-distance / 3;
+    left: @vertical-distance / 3;
+  }
+}
+
+@media all and (max-width: (@responsive-500 + 25)) {
+  label[name="menu-button-label"] {
+    height: 50px;
+    width: 50px;
+    top: 0.5em;
+    left: 0.5em;
+
+    .bar {
+      width: 25px;
+      left: 9px;
+
+      &:nth-child(1) {
+        top: 0.7rem;
+      }
+      &:nth-child(2) {
+        top: calc(50% - 1.5px);
+      }
+      &:nth-child(3) {
+        bottom: 0.7rem;
+      }
+    }
+  }
+}
+
+@media all and (max-width: (@responsive-400 + 10)) {
+  label[name="menu-button-label"] {
+    top: 0;
+    left: 0;
+  }
+}
+
+@media all and (max-width: (@responsive-400 - 80)) {
+  label[name="menu-button-label"] {
+    height: 45px;
+    width: 45px;
+
+    .bar {
+      width: 23px;
+      left: 8px;
+
+      &:nth-child(1) {
+        top: 0.6rem;
+      }
+      &:nth-child(2) {
+        top: calc(50% - 3px);
+      }
+      &:nth-child(3) {
+        bottom: 0.6rem;
+      }
+    }
+  }
+}
+
+/*========
+  LISTS
+==========*/
+ul {
+  color: @description-color;
+  list-style: none;
+  list-style-position: outside;
+  margin-left: 0;
+
+  li {
+    padding-bottom: 10px;
+  }
+}
+
+/*==========================================
+  LINKS
+  Based on code by Matt Beaudry
+  https://codepen.io/mattbeaudry/pen/faKvy
+============================================*/
+a {
+  color: @secondary-color;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+a.underline {
+  .main-animation();
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited, {
+    font-weight: 700;
+  }
+
+  &::before {
+    content: " ";
+    border-bottom: @border @secondary-color;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    width: 0%;
+    .main-animation();
+  }
+
+  &:hover::before,
+  &:active::before,
+  &:focus::before,
+  &:visited::before, {
+    border-bottom: @border @secondary-color;
+    left: 0%;
+    width: 100%;
+  }
+
+  &.underline::before {
+    left: 0%;
+  }
+}
+
+.underline-active {
+  font-weight: 700;
+  color: @section-main-color;
+  background: @secondary-color;
+}
+
+/*================
+  HELPER CLASSES
+==================*/
+.vertical-distance {
+  margin-top: @vertical-distance;
+}
+
+.main-animation() {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.rotate(@angle) {
+  -moz-transform: rotate(@angle);
+  -ms-transform: rotate(@angle);
+  -webkit-transform: rotate(@angle);
+  transform: rotate(@angle);
+}
+
+/*======================================================
+  GRID
+  Based on code by Jan Drewniak 
+  http://j4n.co/blog/Creating-your-own-css-grid-system
+========================================================*/
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 70%;
+  width: 100%;     
+}
+
+.row:before, 
+.row:after {
+  content:"";
+  display: table ;
+  clear:both;
+}
+
+[class*='col-'] {
+  float: left; 
+  min-height: 1px; 
+  width: 16.66%; 
+  /* Gutter */
+  padding-right: 60px;
+}
+
+.col-1{ width: 16.66%; }
+.col-2{ width: 33.33%; }
+.col-3{ width: 50%;    }
+.col-4{ width: 66.66%; }
+.col-5{ width: 83.33%; }
+.col-6{ width: 100%;   }
+
+@media all and (max-width: @responsive-1000){
+  [class*='col-'] { padding-right: 0;}
+  .col-1{ width: 33.33%; }
+  .col-2{ width: 50%;    }
+  .col-3{ width: 100%; }
+  .col-4{ width: 100%;   }
+  .col-5{ width: 100%;   }
+  .col-6{ width: 100%;   }
+
+  .row .col-2:last-of-type{
+      width: 100%; 
+  }
+
+  .row .col-5 ~ .col-1{
+      width: 100%; 
+  }
+}
+
+@media all and (max-width: @responsive-650){
+  .col-1{ width: 100%;   }
+  .col-2{ width: 100%;  }
+  .col-3{ width: 100%;  }
+  .col-4{ width: 100%;  }
+  .col-5{ width: 100%;  }
+  .col-6{ width: 100%;  }
+}
