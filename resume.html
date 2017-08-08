@@ -44,6 +44,8 @@
   <!--==================
     JAVASCRIPT SECTION
   ======================-->
+  <script src='https://code.jquery.com/jquery-1.10.1.min.js'></script>
+  <script type="text/javascript" src="js/index.js"></script>
 
   <!-- Google Analytics tracking code -->
   <script>
@@ -105,7 +107,7 @@
     </ul>
   </nav>
 
-  <div id="content-wrapper">
+  <div class="content-wrapper">
 
     <!--=============
       HEADER SECTION
@@ -115,7 +117,8 @@
         <div class="row">
           <div class="resume name-resume">
             <h1 class="section-heading">Carrie Mah</h1>
-            <h2>UX Designer &<br>Front-end Developer</h2> 
+            <h2 class="subheading">UX Designer &</h2>
+            <h2>Front-end Developer</h2> 
           </div>
 
           <div class="resume experience-resume">
@@ -172,7 +175,7 @@
 
           <h3>Web technologies</h3>
           <ul class="resume-list">
-            <li><span>HTML5, CSS3, Sass</span></li>
+            <li><span>HTML5, CSS3, Sass/Less</span></li>
             <li><span>JavaScript, Angular.js</span></li>
             <li><span>PHP, Wordpress</span></li>
           </ul>
@@ -194,8 +197,9 @@
           <h2>Awards</h2>
 
           <ul class="resume-list">
+            <li><span>Accenture's Grace Hopper Scholarship, <a class="underline" target="_blank" rel="noopener" href="https://www.accenture.com/us-en/careers/ghc2017?src=GHG">2017</a></span></li>
             <li><span>Faculty of Science Dean’s List (3.88/4.0), <a class="underline" target="_blank" rel="noopener" href="https://www.ucalgary.ca/science/excellence_awards/deans_list_2015_2016">2016</a></span></li>
-            <li><span>Computer Science Undergraduate Society Award, <a class="underline" target="_blank" rel="noopener" href="http://www.ucalgary.ca/registrar/node/18892">2015</a></span></li>
+            <li><span>Computer Science Undergrad Society Award, <a class="underline" target="_blank" rel="noopener" href="http://www.ucalgary.ca/registrar/node/18892">2015</a></span></li>
             <li><span>Premier's Citizenship Award, <a class="underline" target="_blank" rel="noopener" href="http://studentaid.alberta.ca/scholarships/alberta-scholarships/?SK=212">2011</a></span></li>
           </ul>
         </div>
@@ -206,6 +210,7 @@
 
           <ul class="resume-list">
             <li><span>Geeky Summit, <a class="underline" target="_blank" rel="noopener" href="http://calgaryherald.com/news/local-news/women-in-technology-gather-for-geeky-summit-in-calgary">2016</a>: shared a story to promote Alberta Status of Women's grants</span></li>
+            <li><span>CODE Documentary Screening, <a class="underline" target="_blank" rel="noopener" href="https://www.eventbrite.ca/e/code-debugging-the-gender-gap-tickets-21835229760#">2016</a>: shared stories with two other panelists, encouraging others to join the tech field</span></li>
             <li><span>CAN-CWiC, <a class="underline" target="_blank" rel="noopener" href="http://www.can-cwic.ca/2016---ottawa.html">2016</a>: presented a mobile design workshop using Google Design Sprint</span></li>
             <li><span>CUCSC, <a class="underline" target="_blank" rel="noopener" href="http://commons.bcit.ca/news/2016/05/computing-science-students-to-talk-about-research-jobs-and-women">2015</a>: led a design workshop & presented a topic on volunteerism</span></li>
           </ul>
@@ -216,9 +221,11 @@
           <h2>Projects</h2>
 
           <ul class="resume-list">
-            <li><span>Recipe Helper, <a class="underline" target="_blank" rel="noopener" href="https://medium.com/portfolio-carrie-mah/the-recipe-helper-834686422f52">2015</a>: UX & visual design, sketching, prototyping, usability testing</span></li>
-            <li><span>Understanding the CPSC Degree, <a class="underline" target="_blank" rel="noopener" href="https://medium.com/portfolio-carrie-mah/understanding-degrees-through-better-visualizations-fec3319b7daa">2016</a>: Data analysis, UX & visual design, sketching, development</span></li>
-            <li><span>Zero to Hero, <a class="underline" target="_blank" rel="noopener" href="https://medium.com/portfolio-carrie-mah/utilizing-gamification-to-inform-better-social-media-habits-b4f47c3e5349">2016</a>: User research, information architecture, UX & visual design, prototyping</span></li>
+            <li><span>CarrieBot, <a class="underline" target="_blank" rel="noopener" href="https://chatfuel.com/bot/misscarriemah">2017</a>: UX design, information architecture</span></li>
+            <li><span>Understanding the CPSC Degree, <a class="underline" target="_blank" rel="noopener" href="https://medium.com/portfolio-carrie-mah/understanding-degrees-through-better-visualizations-fec3319b7daa">2016</a>: Data analysis, UX & visual design, sketches, development</span></li>
+            <li><span>Recipe Helper, <a class="underline" target="_blank" rel="noopener" href="https://medium.com/portfolio-carrie-mah/the-recipe-helper-834686422f52">2015</a>: UX & visual design, sketches, prototypes, usability tests</span></li>
+            <li><span>Zero to Hero, <a class="underline" target="_blank" rel="noopener" href="https://medium.com/portfolio-carrie-mah/utilizing-gamification-to-inform-better-social-media-habits-b4f47c3e5349">2015</a>: User research, UX & visual design, prototypes</span></li>
+            <li><span>Recipe Team Helper, <a class="underline" target="_blank" rel="noopener" href="https://medium.com/portfolio-carrie-mah/the-recipe-team-helper-f4287f16eb23">2015</a>: User research, personas, sketches, prototypes</span></li>
           </ul>
         </div>
       </div>
@@ -248,15 +255,15 @@
                   </h5>
                   <p>
                     <strong>UX & UI Design</strong>
-                    Gather requirements, dissect competitor flows, and design tax forms and flows using Moqups and Axure. Collaborate with multiple teams to improve designs, provide feedback, and discuss user needs.
+                    Design tax forms, flows, and features by gathering requirements and dissecting competitor flows using Moqups and Axure. Collaborate with multiple teams and helped significantly increase user base, NPS scores, and NPS comments.
                   </p>
                   <p>
                     <strong>Design Research</strong>
-                    Plan and moderate usability studies, analyze participant videos, and compile reports with recommendations & priorities. Analyze feedback surveys & NPS comments to present trends in Tableau, and provide usability improvements.
+                    Plan usability studies, analyze participants in thinking aloud tests, and compile reports with recommendations. Analyze feedback surveys & NPS comments to present trends in Tableau, and provide usability improvements.
                   </p>
                   <p>
                     <strong>Front-end Development</strong>
-                    Implement front-end changes using HTML, CSS, and Angular.js, provide code reviews, and perform quality assurance. Created guides to maintain code consistency using Confluence and Axure.
+                    Implement front-end changes using HTML, CSS, and Angular.js, provide code reviews, and perform quality assurance. Created guides to maintain code consistency and improve on-boarding for the UX team using Confluence and Axure.
                   </p>
                 </div>
               </li>
@@ -352,7 +359,7 @@
                 </p>
                 <p>
                   <strong>Design</strong>
-                  Redesigned slides based off content from Ladies Learning Code and Making Makers.
+                  Redesigned slides based on content from Ladies Learning Code and Making Makers.
                 </p>
               </div>
             </li>
