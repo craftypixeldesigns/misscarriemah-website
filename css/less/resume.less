@@ -9,6 +9,10 @@ section.section-header {
 
   h2 {
     font-size: @description-font-size * 1.7;
+
+    &.subheading {
+      margin-bottom: 5px;
+    }
   }
 
   p {
@@ -77,13 +81,26 @@ p {
   line-height: @description-font-size * 1.4;
 }
 
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
+p::selection,
+strong::selection,
+ul li span::selection,
+br::selection {
+  color: @section-main-color;
+  background-color: @secondary-color;
+}
+
 /*==================================
   TIMELINE
   Based on code by Michaela 
   https://codepen.io/Fischaela/pen/sJdqg/
 ====================================*/
 .timeline {
-  margin-top: @vertical-distance;
+  margin-top: @vertical-distance / 1.1;
   margin-bottom: @vertical-distance * 1.5;
 	position: relative;
 
@@ -124,7 +141,7 @@ p {
 
 .timeline-event-icon {
   outline: @border white;
-  margin: 0.4em -.95em;
+  margin: 0.4em -.96em;
   position: absolute;
   width: 20px;
   height: 20px;

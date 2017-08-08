@@ -9,7 +9,7 @@
  */
 
 $(window).load(function() {
-	$('#content-wrapper').click(function() {
+	$('.content-wrapper').click(function() {
 		$("#menu-button").prop('checked', false);
 	});
 
@@ -24,7 +24,7 @@ $(window).load(function() {
 	$(window).scroll(function() {
 	    var position = $(this).scrollTop();
 		var scrollHeight = $(document).height();
-		var scrollPosition = $(window).height() + position;
+		var scrollPosition = $(window).height();
 
 	    $('nav.menu a[href^="#"]').each(function() {
 			var anchorId = $(this).attr('href'); 

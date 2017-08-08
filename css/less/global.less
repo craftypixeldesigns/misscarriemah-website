@@ -111,13 +111,11 @@ nav.menu {
   &.slide-in-menu {
     ul {
       padding-left: 0;
+      margin: 0 0 15px 0;
       width: 100%;
-      display: table;
-      height: 50vh;
 
       li {
         padding-bottom: 0;
-        display: table-row;
 
         a {
           padding-left: 130px;
@@ -131,8 +129,8 @@ nav.menu {
 }
 
 svg.logo-cm {
-  width: 50px;
-  margin-bottom: @vertical-distance / 2;
+  width: 80px;
+  margin-bottom: .5em;
 
   .logo-c {
     fill: @primary-color;
@@ -146,8 +144,8 @@ svg.logo-cm {
 label[name="menu-button-label"] {
   border: @border @secondary-color;
   cursor: pointer;
-  width: 60px;
-  height: 60px;
+  width: 3.5rem;
+  height: 3.5rem;
   position: fixed;
   top: @vertical-distance / 2;
   left: @vertical-distance / 2;
@@ -157,19 +155,19 @@ label[name="menu-button-label"] {
   .bar {
     background: @secondary-color;
     position: absolute;
-    left: 12px;
-    width: 30px;
+    left: 9px;
+    width: 2rem;
     height: 3px;
     .main-animation();
 
     &:nth-child(1) {
-      top: 1rem;
+      top: .9rem;
     }
     &:nth-child(2) {
       top: calc(50% - 1.5px);
     }
     &:nth-child(3) {
-      bottom: 1rem;
+      bottom: .9rem;
     }
   }
   
@@ -198,7 +196,7 @@ input[name="menu-button"] {
 
       &:nth-child(1) {
         .rotate(45deg);
-        top: calc(50% - 1.5px);
+        top: 1.5rem;
       }
 
       &:nth-child(2) {
@@ -207,30 +205,40 @@ input[name="menu-button"] {
 
       &:nth-child(3) {
         .rotate(-45deg);
-        bottom: calc(50% - 1.5px);
+        bottom: 1.45rem;
       }
     }
 
   }
 }
 
-@media all and (max-width: @responsive-650) {
-  nav.menu {
-    font-size: 25px;
-    padding-top: 2em;
+div.social-list.social-nav {
+  padding-left: 130px;
 
-    &.slide-in-menu {
-      ul {
-        height: 60vh;
-      }
+  &.slide-in-menu ul li a.social-link {
+    padding: 0;
+  }
+  text-align: left;
+
+  ul li {
+    padding: 0;
+    margin: 0 40px 0 0;
+    border: none;
+    width: 0;
+    height: 0;
+
+    a {
+      padding: 0;
     }
   }
 
-  nav.menu.slide-in-menu svg.logo-cm {
-    width: 80px;
-    margin-bottom: .5em;
+  svg.social {
+    height: 20px;
+    width: 20px;
   }
+}
 
+@media all and (max-width: @responsive-650) {
   label[name="menu-button-label"] {
     top: @vertical-distance / 3;
     left: @vertical-distance / 3;
@@ -259,9 +267,51 @@ input[name="menu-button"] {
       }
     }
   }
+
+  input[name="menu-button"]:checked + label[name="menu-button-label"] {
+    .bar{
+
+      &:nth-child(1) {
+        top: 1.35rem;
+      }
+
+      &:nth-child(3) {
+        bottom: 1.2rem;
+      }
+    }
+  }
+  
 }
 
 @media all and (max-width: (@responsive-400 + 10)) {
+  nav.menu {
+    font-size: 20px;
+    padding-top: 1em;
+    width: 200px;
+
+    &.slide-in-menu {
+      ul li a {
+        padding: 10px 0 10px 60px;
+
+        svg.logo-cm {
+          width: 60px;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  div.social-list.social-nav {
+    padding-left: 60px;
+
+    ul li {
+      margin: 0 30px 0 0;
+      a {
+        padding: 0;
+      }
+    }
+  }
+
   label[name="menu-button-label"] {
     top: 0;
     left: 0;
@@ -287,6 +337,20 @@ input[name="menu-button"] {
         bottom: 0.6rem;
       }
     }
+  }
+
+  input[name="menu-button"]:checked + label[name="menu-button-label"] {
+    .bar{
+
+      &:nth-child(1) {
+        top: 1.1rem;
+      }
+
+      &:nth-child(3) {
+        bottom: 1.1rem;
+      }
+    }
+
   }
 }
 
@@ -354,6 +418,18 @@ a.underline {
   font-weight: 700;
   color: @section-main-color;
   background: @secondary-color;
+}
+
+a.underline::selection,
+strong::selection,
+button::selection {
+  font-weight: bolder;
+}
+
+a.underline::-moz-selection,
+strong::-moz-selection,
+button::-moz-selection {
+  font-weight: bolder;
 }
 
 /*================
