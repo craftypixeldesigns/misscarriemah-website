@@ -288,9 +288,9 @@ section.fullscreen.section-main {
 }
 
 /*============================================
-  IMAGES
-  Based on code by Josh Howenstine
-  https://codepen.io/joshhowenstine/pen/yLqgb
+  PORTFOLIO
+  Inspired by Nicole Saidy's website
+  https://nicolesaidy.com/#work
 ==============================================*/
 a.work-link {
   width: 100%;
@@ -305,7 +305,6 @@ div.work-card {
     background: @secondary-color;
     background-repeat: no-repeat;
     height: 300px;
-    opacity: 0.8;
     .main-animation();
   }
 
@@ -426,6 +425,24 @@ div.work-card:hover {
     .img4 {
       background-size: 285%;
     }
+  }
+}
+
+/*========
+  SKILLS
+==========*/
+div.img-design-process {
+  background-repeat: no-repeat;
+  background-image: url("../images/design-process-cycle.png");
+  background-size: 90%;
+  background-position: center;
+  height: 500px;
+  width: 700px;
+  margin-bottom: @vertical-distance;
+  .main-animation();
+
+  &:hover {
+    background-size: 95%;
   }
 }
 
@@ -734,7 +751,6 @@ button.contact-btn {
 
 @media all and (max-width: @responsive-400) {
   button.main-btn {
-    /*letter-spacing: 2px;*/
     line-height: 20px;
     border-width: 4px;
   }
@@ -755,6 +771,7 @@ button.contact-btn {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .bg-light {
